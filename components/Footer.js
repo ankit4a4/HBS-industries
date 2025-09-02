@@ -36,8 +36,7 @@ export default function Footer() {
             className="space-y-4"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <Building2 className="w-8 h-8 text-blue-400" />
-              <span className="text-2xl font-bold">HBS Industries</span>
+             <img src="/logo-two.png"  alt="" />
             </div>
             <p className="text-gray-300 leading-relaxed">
               Leading manufacturer of premium industrial solutions with Jindal aluminum extrusions. 
@@ -77,7 +76,7 @@ export default function Footer() {
               {['Scaffolds', 'Ladders', 'Cable Trays', 'Raceways'].map((item) => (
                 <li key={item}>
                   <Link
-                    href="/products"
+                    href="/#"
                     className="text-gray-300 hover:text-blue-400 transition-colors"
                   >
                     {item}
