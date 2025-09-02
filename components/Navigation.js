@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Facebook, Instagram, Linkedin, PhoneCall } from "lucide-react";
+import { Menu, X, PhoneCall, Facebook, Instagram, Linkedin } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const navItems = [
@@ -29,31 +29,29 @@ export default function Navigation() {
   return (
     <>
       {/* Top Bar */}
-      <div className="w-full hidden md:block bg-black text-white text-sm py-2 px-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex flex-wrap items-center gap-4">
-            <span className="font-medium">We believe in Quality</span>
-            <a href="mailto:sales@hbsindustries.com" className="hover:underline">
-              sales@hbsindustries.com
-            </a>
-            <a href="tel:+916366832224" className="flex items-center gap-1 hover:underline">
-              <PhoneCall className="w-4 h-4" /> +91 6366 832224
-            </a>
-          </div>
-          <div className="flex items-center gap-3">
-            <a href="https://facebook.com" target="_blank" className="hover:text-gray-200">
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a href="https://instagram.com" target="_blank" className="hover:text-gray-200">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" className="hover:text-gray-200">
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a href="https://wa.me/916366832224" target="_blank" className="hover:text-gray-200">
-              <FaWhatsapp className="w-5 h-5" />
-            </a>
-          </div>
+      <div className="hidden md:flex w-full bg-black text-white text-sm py-2 px-4 justify-between items-center">
+        <div className="flex items-center gap-4">
+          <span>We believe in Quality</span>
+          <a href="mailto:sales@hbsindustries.com" className="hover:underline">
+            sales@hbsindustries.com
+          </a>
+          <a href="tel:+916366832224" className="flex items-center gap-1 hover:underline">
+            <PhoneCall className="w-4 h-4" /> +91 6366 832224
+          </a>
+        </div>
+        <div className="flex items-center gap-3">
+          <a href="https://facebook.com" target="_blank" className="hover:text-gray-200">
+            <Facebook className="w-5 h-5" />
+          </a>
+          <a href="https://instagram.com" target="_blank" className="hover:text-gray-200">
+            <Instagram className="w-5 h-5" />
+          </a>
+          <a href="https://linkedin.com" target="_blank" className="hover:text-gray-200">
+            <Linkedin className="w-5 h-5" />
+          </a>
+          <a href="https://wa.me/916366832224" target="_blank" className="hover:text-gray-200">
+            <FaWhatsapp className="w-5 h-5" />
+          </a>
         </div>
       </div>
 
@@ -62,7 +60,7 @@ export default function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="sticky top-0 left-0 right-0 z-50 transition-all duration-300"
+        className="sticky top-0 left-0 right-0 z-50 transition-shadow"
       >
         {/* Background */}
         <div
@@ -85,29 +83,16 @@ export default function Navigation() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item, index) => (
-                <motion.div
+              {navItems.map((item) => (
+                <Link
                   key={item.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  href={item.href}
+                  className={`relative px-4 py-2 text-lg font-medium transition-colors ${
+                    pathname === item.href ? "text-white" : "text-gray-200 hover:text-white"
+                  }`}
                 >
-                  <Link
-                    href={item.href}
-                    className={`relative px-4 py-2 text-lg font-medium transition-colors ${
-                      pathname === item.href ? "text-white" : "text-gray-200 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                    {pathname === item.href && (
-                      <motion.div
-                        layoutId="navbar-indicator"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                  </Link>
-                </motion.div>
+                  {item.label}
+                </Link>
               ))}
             </div>
 
@@ -143,38 +128,31 @@ export default function Navigation() {
             </motion.button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Menu */}
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                initial={{ scaleY: 0 }}
-                animate={{ scaleY: 1 }}
-                exit={{ scaleY: 0 }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
-                style={{ originY: 0, overflow: "hidden" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
                 className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200"
+                style={{ willChange: "opacity" }}
               >
-                <div className="py-4 space-y-2">
-                  {navItems.map((item, index) => (
-                    <motion.div
+                <div className="py-4 flex flex-col">
+                  {navItems.map((item) => (
+                    <Link
                       key={item.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.2, delay: index * 0.05 }}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`px-4 py-3 text-lg font-medium transition-colors ${
+                        pathname === item.href
+                          ? "text-blue-600 bg-blue-50"
+                          : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                      }`}
                     >
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`block px-4 py-3 text-lg font-medium transition-colors ${
-                          pathname === item.href
-                            ? "text-blue-600 bg-blue-50"
-                            : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </motion.div>
+                      {item.label}
+                    </Link>
                   ))}
                 </div>
               </motion.div>

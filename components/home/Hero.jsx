@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import img1 from "@/public/images/home/banner-main.jpg";
-import img2 from "@/public/images/home/banner2.jpg";
-import img3 from "@/public/images/home/banner3.jpg";
+import img2 from "@/public/images/home/banner-main.jpg";
+import img3 from "@/public/images/home/banner-main.jpg";
 
 const Hero = () => {
   const [currentBg, setCurrentBg] = useState(0);
@@ -16,7 +16,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[550px] overflow-hidden">
+    <div className="relative w-full h-[550px] overflow-hidden"> 
       {/* Animated Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
