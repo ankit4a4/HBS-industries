@@ -53,28 +53,11 @@ const Services = () => {
         backgroundImage: `url(${BG_IMAGE_URL})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: "scroll", // changed from fixed for performance
       }}
     >
-      {/* Animated gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-black/80 to-purple-900/70">
-        <motion.div
-          className="absolute inset-0 opacity-30"
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          style={{
-            backgroundImage: `radial-gradient(circle at 40% 50%, rgba(59, 130, 246, 0.4) 0%, transparent 50%),
-                              radial-gradient(circle at 60% 50%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)`,
-            backgroundSize: "50% 50%",
-          }}
-        />
-      </div>
+      {/* Static gradient overlay for smooth performance */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-black/80 to-purple-900/70" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
@@ -130,175 +113,35 @@ const ServiceCard = ({ service, index }) => {
   return (
     <motion.div
       className="relative bg-black/20 backdrop-blur-md rounded-2xl p-8 border border-white/20 overflow-hidden group cursor-pointer"
-      initial={{ opacity: 0, y: 40, rotateY: 10 }}
-      whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1,
-        type: "spring",
-        damping: 15,
-        stiffness: 100,
-      }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true, margin: "-50px" }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{
-        y: -15,
+        y: -10,
         scale: 1.02,
-        transition: {
-          type: "spring",
-          stiffness: 300,
-          damping: 15,
-        },
+        transition: { type: "spring", stiffness: 200 },
       }}
+      style={{ willChange: "transform" }}
     >
-      {/* Hover effect background */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 opacity-0"
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      />
+      {/* Icon */}
+      <div className="relative mb-6 bg-white/20 p-4 rounded-xl inline-flex z-10">
+        {service.icon}
+      </div>
 
-      {/* Floating particles effect */}
-      {[1, 2, 3, 4].map((i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 rounded-full bg-blue-400/30"
-          initial={{
-            opacity: 0,
-            scale: 0,
-            x: Math.random() * 100 - 50 + "%",
-            y: Math.random() * 100 - 50 + "%",
-          }}
-          animate={{
-            opacity: isHovered ? 1 : 0,
-            scale: isHovered ? 1 : 0,
-            x: [
-              Math.random() * 100 - 50 + "%",
-              Math.random() * 100 - 50 + "%",
-              Math.random() * 100 - 50 + "%",
-            ],
-            y: [
-              Math.random() * 100 - 50 + "%",
-              Math.random() * 100 - 50 + "%",
-              Math.random() * 100 - 50 + "%",
-            ],
-          }}
-          transition={{
-            duration: 5,
-            repeat: isHovered ? Infinity : 0,
-            ease: "linear",
-          }}
-        />
-      ))}
+      {/* Title & Description */}
+      <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+      <p className="text-gray-200 mb-4">{service.desc}</p>
 
-      {/* Icon container */}
-      <motion.div
-        className="relative mb-6 bg-white/20 p-4 rounded-xl inline-flex group-hover:bg-gradient-to-r group-hover:from-blue-500/40 group-hover:to-purple-500/40 transition-colors duration-300 z-10"
-        whileHover={{
-          rotate: [0, -10, 10, 0],
-          scale: 1.1,
-          transition: { duration: 0.5 },
-        }}
-        animate={{
-          y: isHovered ? [0, -5, 0] : 0,
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: isHovered ? Infinity : 0,
-        }}
-      >
-        <motion.div
-          animate={{
-            scale: isHovered ? [1, 1.2, 1] : 1,
-          }}
-          transition={{
-            duration: 0.5,
-            repeat: isHovered ? Infinity : 0,
-            repeatDelay: 0.5,
-          }}
-        >
-          {service.icon}
-        </motion.div>
-
-        {/* Icon glow effect */}
-        <motion.div
-          className="absolute inset-0 rounded-xl bg-blue-500/20"
-          animate={{
-            scale: isHovered ? 1.5 : 1,
-            opacity: isHovered ? [0, 0.5, 0] : 0,
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: isHovered ? Infinity : 0,
-          }}
-        />
-      </motion.div>
-
-      <motion.h3
-        className="text-xl font-bold text-white mb-3 z-10 relative"
-        animate={{
-          color: isHovered ? "#93c5fd" : "#ffffff",
-        }}
-      >
-        {service.title}
-      </motion.h3>
-
-      <motion.p
-        className="text-gray-200 mb-4 z-10 relative"
-        animate={{
-          scale: isHovered ? 1.05 : 1,
-        }}
-      >
-        {service.desc}
-      </motion.p>
-
-      <motion.a
+      {/* Read More link */}
+      <a
         href="#"
-        className="text-blue-300 font-medium inline-flex items-center gap-2 mt-auto group-hover:text-white transition-colors duration-300 z-10 relative"
-        whileHover={{ x: 5 }}
+        className="text-blue-300 font-medium inline-flex items-center gap-2 mt-auto transition-colors duration-300 hover:text-white"
       >
-        Read More
-        <motion.span
-          animate={{
-            x: isHovered ? 8 : 0,
-            opacity: isHovered ? [0, 1, 1] : 1,
-          }}
-          transition={{
-            duration: 0.5,
-            repeat: isHovered ? Infinity : 0,
-            repeatType: "reverse",
-            repeatDelay: 0.5,
-          }}
-        >
-          →
-        </motion.span>
-      </motion.a>
-
-      {/* Border glow on hover */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl border-2 border-transparent"
-        animate={{
-          boxShadow: isHovered
-            ? "0 0 25px rgba(59, 130, 246, 0.6), inset 0 0 15px rgba(59, 130, 246, 0.3)"
-            : "0 0 0px rgba(59, 130, 246, 0)",
-          borderColor: isHovered ? "rgba(147, 197, 253, 0.5)" : "transparent",
-        }}
-        transition={{ duration: 0.3 }}
-      />
-
-      {/* Shine effect on hover */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -rotate-45 scale-150 z-0"
-        animate={{
-          left: isHovered ? ["100%", "-100%"] : "100%",
-          opacity: isHovered ? [0, 0.5, 0] : 0,
-        }}
-        transition={{
-          duration: 0.8,
-          times: [0, 0.5, 1],
-        }}
-      />
+        Read More →
+      </a>
     </motion.div>
   );
 };
