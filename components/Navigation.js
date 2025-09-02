@@ -160,7 +160,6 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
