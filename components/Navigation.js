@@ -4,23 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  Facebook,
-  Instagram,
-  Linkedin,
-  PhoneCall,
-} from "lucide-react";
+import { Menu, X, Facebook, Instagram, Linkedin, PhoneCall } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-
-// const navItems = [
-//   { href: '/', label: 'Home' },
-//   { href: '/about', label: 'About' },
-//   { href: '/services', label: 'Services' },
-//   { href: '/products', label: 'Products' },
-//   { href: '/contact', label: 'Contact' },
-// ];
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -29,79 +14,55 @@ const navItems = [
   { href: "/#", label: "Products" },
   { href: "/#", label: "Contact" },
 ];
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
+      {/* Top Bar */}
       <div className="w-full hidden md:block bg-black text-white text-sm py-2 px-4">
         <div className="container mx-auto flex items-center justify-between">
-          {/* Left Side */}
           <div className="flex flex-wrap items-center gap-4">
             <span className="font-medium">We believe in Quality</span>
-            <a
-              href="mailto:sales@hbsindustries.com"
-              className="hover:underline"
-            >
+            <a href="mailto:sales@hbsindustries.com" className="hover:underline">
               sales@hbsindustries.com
             </a>
-            <a
-              href="tel:+916366832224"
-              className="flex items-center gap-1 hover:underline"
-            >
+            <a href="tel:+916366832224" className="flex items-center gap-1 hover:underline">
               <PhoneCall className="w-4 h-4" /> +91 6366 832224
             </a>
           </div>
-
-          {/* Right Side Social Icons */}
           <div className="flex items-center gap-3">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              className="hover:text-gray-200"
-            >
+            <a href="https://facebook.com" target="_blank" className="hover:text-gray-200">
               <Facebook className="w-5 h-5" />
             </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              className="hover:text-gray-200"
-            >
+            <a href="https://instagram.com" target="_blank" className="hover:text-gray-200">
               <Instagram className="w-5 h-5" />
             </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              className="hover:text-gray-200"
-            >
+            <a href="https://linkedin.com" target="_blank" className="hover:text-gray-200">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a
-              href="https://wa.me/916366832224"
-              target="_blank"
-              className="hover:text-gray-200"
-            >
+            <a href="https://wa.me/916366832224" target="_blank" className="hover:text-gray-200">
               <FaWhatsapp className="w-5 h-5" />
             </a>
           </div>
         </div>
       </div>
 
+      {/* Main Navbar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="sticky top-[0px] left-0 right-0 z-50   transition-all duration-300"
+        className="sticky top-0 left-0 right-0 z-50 transition-all duration-300"
       >
         {/* Background */}
         <div
@@ -118,11 +79,7 @@ export default function Navigation() {
             {/* Logo */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/" className="flex items-center space-x-2">
-                <img
-                  src="/logo.png"
-                  alt="HBS Industries Logo"
-                  className="h-10 w-auto object-contain"
-                />
+                <img src="/logo.png" alt="HBS Industries Logo" className="h-10 w-auto object-contain" />
               </Link>
             </motion.div>
 
@@ -138,9 +95,7 @@ export default function Navigation() {
                   <Link
                     href={item.href}
                     className={`relative px-4 py-2 text-lg font-medium transition-colors ${
-                      pathname === item.href
-                        ? "text-white"
-                        : "text-gray-200 hover:text-white"
+                      pathname === item.href ? "text-white" : "text-gray-200 hover:text-white"
                     }`}
                   >
                     {item.label}
@@ -148,11 +103,7 @@ export default function Navigation() {
                       <motion.div
                         layoutId="navbar-indicator"
                         className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"
-                        transition={{
-                          type: "spring",
-                          stiffness: 380,
-                          damping: 30,
-                        }}
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
                   </Link>
@@ -160,6 +111,7 @@ export default function Navigation() {
               ))}
             </div>
 
+            {/* Mobile Menu Button */}
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
@@ -195,10 +147,11 @@ export default function Navigation() {
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                exit={{ scaleY: 0 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                style={{ originY: 0, overflow: "hidden" }}
                 className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200"
               >
                 <div className="py-4 space-y-2">
@@ -207,7 +160,8 @@ export default function Navigation() {
                       key={item.href}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.2, delay: index * 0.05 }}
                     >
                       <Link
                         href={item.href}
