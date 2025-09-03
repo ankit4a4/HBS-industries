@@ -11,21 +11,21 @@ const products = [
     image: img1.src,
     description:
       "Premium quality scaffolding solutions for construction safety and efficiency",
-    features: ["Safety Certified", "Durable Material", "Easy Assembly"],
+    features: ["Durable Material", "Easy Assembly"],
   },
   {
     name: "Ladders",
     image: img2.src,
     description:
       "Industrial-grade ladders designed for stability and maximum safety",
-    features: ["Anti-Slip Steps", "Lightweight", "Height Adjustable"],
+    features: ["Anti-Slip Steps", "Lightweight", ],
   },
   {
     name: "Raceways",
     image: img3.src,
     description:
       "Cable management solutions for organized and safe electrical installations",
-    features: ["Fire Resistant", "Easy Installation", "Multiple Sizes"],
+    features: [ "Easy Installation", "Multiple Sizes"],
   },
 ];
 

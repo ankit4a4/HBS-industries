@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaBullseye, FaEye, FaStar, FaRocket } from "react-icons/fa";
+import { FaBullseye, FaEye } from "react-icons/fa";
 
 const VisionMission = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -33,7 +33,8 @@ const VisionMission = () => {
             <span className="text-purple-600">Mission</span>
           </h2>
           <p className="text-gray-100 max-w-2xl mx-auto text-lg">
-            Guiding principles that drive our commitment to excellence and innovation
+            Guiding principles that drive our commitment to excellence and
+            innovation
           </p>
         </motion.div>
 
@@ -56,13 +57,18 @@ const VisionMission = () => {
                 <div className="flex items-center gap-5 mb-6">
                   <motion.div
                     className="p-4 bg-blue-500 text-white rounded-2xl shadow-lg"
-                    whileHover={{ rotate: [0, -5, 5, 0], transition: { duration: 0.5 } }}
+                    whileHover={{
+                      rotate: [0, -5, 5, 0],
+                      transition: { duration: 0.5 },
+                    }}
                   >
                     <FaEye size={28} />
                   </motion.div>
                   <h3
                     className={`text-2xl font-bold text-gray-200 ${
-                      hoveredCard === "vision" ? "text-blue-400" : "text-gray-200"
+                      hoveredCard === "vision"
+                        ? "text-blue-400"
+                        : "text-gray-200"
                     } transition-colors duration-300`}
                   >
                     Our Vision
@@ -70,8 +76,8 @@ const VisionMission = () => {
                 </div>
                 <p className="text-gray-200 text-lg leading-relaxed">
                   To be the most trusted industrial partner by delivering safe,
-                  reliable, and innovative products that empower businesses to achieve
-                  greater efficiency and success.
+                  reliable, and innovative products that empower businesses to
+                  achieve greater efficiency and success.
                 </p>
               </div>
               {/* Hover border glow */}
@@ -83,7 +89,9 @@ const VisionMission = () => {
                       ? "0 0 20px rgba(37, 99, 235, 0.3)"
                       : "0 0 0px rgba(37, 99, 235, 0)",
                   borderColor:
-                    hoveredCard === "vision" ? "rgba(37, 99, 235, 0.2)" : "transparent",
+                    hoveredCard === "vision"
+                      ? "rgba(37, 99, 235, 0.2)"
+                      : "transparent",
                 }}
                 transition={{ duration: 0.3 }}
               />
@@ -108,22 +116,27 @@ const VisionMission = () => {
                 <div className="flex items-center gap-5 mb-6">
                   <motion.div
                     className="p-4 bg-purple-500 text-white rounded-2xl shadow-lg"
-                    whileHover={{ rotate: [0, -5, 5, 0], transition: { duration: 0.5 } }}
+                    whileHover={{
+                      rotate: [0, -5, 5, 0],
+                      transition: { duration: 0.5 },
+                    }}
                   >
                     <FaBullseye size={28} />
                   </motion.div>
                   <h3
                     className={`text-2xl font-bold text-gray-200 ${
-                      hoveredCard === "mission" ? "text-purple-400" : "text-gray-200"
+                      hoveredCard === "mission"
+                        ? "text-purple-400"
+                        : "text-gray-200"
                     } transition-colors duration-300`}
                   >
                     Our Mission
                   </h3>
                 </div>
                 <p className="text-gray-200 text-lg leading-relaxed">
-                  To provide cost-effective, high-quality, and timely solutions while
-                  building lasting relationships with our clients through trust,
-                  innovation, and continuous improvement.
+                  To provide cost-effective, high-quality, and timely solutions
+                  while building lasting relationships with our clients through
+                  trust, innovation, and continuous improvement.
                 </p>
               </div>
               {/* Hover border glow */}
@@ -135,7 +148,9 @@ const VisionMission = () => {
                       ? "0 0 20px rgba(124, 58, 237, 0.3)"
                       : "0 0 0px rgba(124, 58, 237, 0)",
                   borderColor:
-                    hoveredCard === "mission" ? "rgba(124, 58, 237, 0.2)" : "transparent",
+                    hoveredCard === "mission"
+                      ? "rgba(124, 58, 237, 0.2)"
+                      : "transparent",
                 }}
                 transition={{ duration: 0.3 }}
               />
