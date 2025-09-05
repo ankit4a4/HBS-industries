@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FaArrowRight, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
+import React from "react";
 import img1 from "@/public/images/home/SCAFFOLDS.png";
 import img2 from "@/public/images/home/ladderr.png";
 import img3 from "@/public/images/home/RACEWAYS.png";
@@ -9,36 +7,31 @@ const products = [
   {
     name: "Scaffolds",
     image: img1.src,
-    description:
-      "Premium quality scaffolding solutions for construction safety and efficiency",
-    features: ["Durable Material", "Easy Assembly"],
+    description: "Premium quality scaffolding solutions for construction safety and efficiency",
+    isNew: false,
   },
   {
     name: "Ladders",
     image: img2.src,
-    description:
-      "Industrial-grade ladders designed for stability and maximum safety",
-    features: ["Anti-Slip Steps", "Lightweight", ],
+    description: "Industrial-grade ladders designed for stability and maximum safety",
+    isNew: false, // NEW tag
   },
   {
     name: "Raceways",
     image: img3.src,
-    description:
-      "Cable management solutions for organized and safe electrical installations",
-    features: [ "Easy Installation", "Multiple Sizes"],
+    description: "Cable management solutions for organized and safe electrical installations",
+    isNew: false,
   },
 ];
 
 const Products = () => {
-  const [hovered, setHovered] = useState(null);
-
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-6 md:py-20 px-6 md:px-16 lg:px-24">
+    <section className="w-full bg-gray-50 py-12 px-6 md:px-16 lg:px-24">
       {/* Header */}
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 relative inline-block">
           Our Products
-          <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full" />
+          <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1 bg-gray-800 rounded-full" />
         </h2>
         <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-lg">
           Explore our high-quality industrial products designed to meet your
@@ -47,55 +40,39 @@ const Products = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {products.map((p, i) => (
-          <motion.div
+          <div
             key={i}
-            className="relative bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col"
-            onMouseEnter={() => setHovered(i)}
-            onMouseLeave={() => setHovered(null)}
-            whileHover={{ y: -8 }}
+            className="relative bg-white shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden 
+                       rounded-b-2xl rounded-t-[50%] group"
           >
-            {/* Image */}
-            <div className="relative w-full h-64 overflow-hidden">
-              <motion.img
+            {/* NEW Tag */}
+            {p.isNew && (
+              <span className="absolute top-5 left-1/2 -translate-x-1/2 bg-white shadow px-4 py-1 text-xs font-medium rounded-full">
+                NEW
+              </span>
+            )}
+
+            {/* Image Section */}
+            <div className="relative w-full h-72 flex items-center justify-center">
+              <img
                 src={p.image}
                 alt={p.name}
-                className="w-full h-full object-contain"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.5 }}
+                className="max-h-60 object-contain drop-shadow-lg"
               />
-              {/* Quick buttons */}
-
-              {/* Tag */}
-              <span className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full">
-                Industrial
-              </span>
             </div>
 
             {/* Content */}
-            <div className="p-6 flex flex-col flex-grow">
-              <h3
-                className={`text-xl font-bold mb-2 ${
-                  hovered === i ? "text-blue-600" : "text-gray-900"
-                }`}
-              >
-                {p.name}
-              </h3>
-              <p className="text-gray-600 mb-4 flex-grow">{p.description}</p>
-              <ul className="mb-5 space-y-1 text-sm text-gray-500">
-                {p.features.map((f, k) => (
-                  <li key={k} className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-2" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full py-3 bg-blue-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-blue-700 transition">
-                View Details <FaArrowRight />
-              </button>
+            <div className="px-6 pb-8 text-center relative">
+              <h3 className="text-xl font-bold text-gray-800">{p.name}</h3>
+              <p className="text-gray-500 text-sm">{p.description}</p>
+
+              {/* Hover Line */}
+              <span className="absolute bottom-0 left-1/2 w-0 h-[3px] bg-blue-500 rounded-full 
+                               transition-all duration-500 group-hover:w-1/2 group-hover:-translate-x-1/2" />
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

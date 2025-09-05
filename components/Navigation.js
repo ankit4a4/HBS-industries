@@ -40,7 +40,7 @@ export default function Navigation() {
   return (
     <>
       {/* Top Info Bar */}
-      <div className="w-full bg-black text-white text-xs md:text-sm py-2 px-4">
+      <div className="w-full hidden md:flex flex-col bg-black text-white text-xs md:text-sm py-2 px-4">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-2 md:mb-0">
             <a

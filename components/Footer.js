@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Building2, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import Link from 'next/link';
 
 const socialLinks = [
@@ -10,6 +10,15 @@ const socialLinks = [
   { icon: Twitter, href: '#', label: 'Twitter' },
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
   { icon: Instagram, href: '#', label: 'Instagram' },
+];
+
+const services = [
+  "Effortless Equipment Rental",
+  "Direct Manufacturer Deals",
+  "Expert On-Site Trainings",
+  "Comprehensive Maintenance",
+  "Rapid Delivery Solutions",
+  "Instant Replacements & Repairs",
 ];
 
 export default function Footer() {
@@ -27,28 +36,22 @@ export default function Footer() {
       className="bg-gray-900 text-white"
     >
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="space-y-4"
-          >
-            <div className="flex items-center space-x-2 mb-6">
-             <img src="/logo-two.png"  alt="" />
-            </div>
-            <p className="text-gray-300 leading-relaxed">
-              Leading manufacturer of premium industrial solutions with Jindal aluminum extrusions. 
-              Committed to safety, durability, and excellence.
-            </p>
-          </motion.div>
+        {/* Top Section */}
+        <div className="flex  flex-col items-center justify-center  text-center  mb-12">
+          <img src="/logo-two.png" alt="HBS Industries" className="h-14 mb-4" />
+          <p className="text-gray-300 max-w-xl leading-relaxed">
+            Leading manufacturer of premium industrial solutions with Jindal aluminum extrusions. 
+            Committed to safety, durability, and excellence.
+          </p>
+        </div>
 
+        {/* 4 Column Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center md:text-left">
           {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h3 className="text-xl font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
@@ -67,9 +70,9 @@ export default function Footer() {
 
           {/* Products */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-xl font-semibold mb-6">Products</h3>
             <ul className="space-y-3">
@@ -86,44 +89,52 @@ export default function Footer() {
             </ul>
           </motion.div>
 
+          {/* Premium Services */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            <h3 className="text-xl font-semibold mb-2">Premium Services</h3>
+           
+            <ul className="space-y-3">
+              {services.map((service, idx) => (
+                <li key={idx} className="text-gray-300 hover:text-blue-400 transition-colors text-sm">
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
             <h3 className="text-xl font-semibold mb-6">Contact Info</h3>
             <div className="space-y-4">
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3"
-              >
+              <div className="flex items-center justify-center md:justify-start space-x-3">
                 <Phone className="w-5 h-5 text-blue-400" />
                 <span className="text-gray-300">+91 9876543210</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center space-x-3"
-              >
+              </div>
+              <div className="flex items-center justify-center md:justify-start space-x-3">
                 <Mail className="w-5 h-5 text-blue-400" />
                 <span className="text-gray-300">info@hbsindustries.com</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-start space-x-3"
-              >
+              </div>
+              <div className="flex items-start justify-center md:justify-start space-x-3">
                 <MapPin className="w-5 h-5 text-blue-400 mt-1" />
                 <span className="text-gray-300">
                   Industrial Area, Sector 45<br />
                   Gurgaon, Haryana 122003
                 </span>
-              </motion.div>
+              </div>
             </div>
 
             {/* Social Links */}
             <div className="mt-8">
               <h4 className="text-lg font-medium mb-4">Follow Us</h4>
-              <div className="flex space-x-4">
+              <div className="flex justify-center md:justify-start space-x-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.label}

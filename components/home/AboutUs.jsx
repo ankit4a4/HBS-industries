@@ -104,34 +104,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
-  {[
-    { number: "4+", label: "Years Experience" },
-    { number: "200+", label: "Happy Clients" },
-    { number: "500+", label: "Projects Completed" },
-    { number: "24/7", label: "Support" },
-  ].map((stat, index) => (
-    <div
-      key={index}
-      className="group relative text-center p-8 bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-2"
-    >
-      {/* Accent Circle Background */}
-      <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-[#669bcc]/10 group-hover:bg-[#669bcc]/20 blur-lg transition-all duration-300"></div>
-
-      {/* Number */}
-      <div className="relative text-4xl font-extrabold text-[#669bcc] mb-3 group-hover:scale-110 transition-transform duration-300">
-        {stat.number}
-      </div>
-
-      {/* Label */}
-      <div className="text-gray-700 font-medium">{stat.label}</div>
-
-      {/* Animated Underline */}
-      <div className="mt-3 h-1 w-0 bg-[#669bcc] mx-auto rounded-full group-hover:w-12 transition-all duration-300"></div>
-    </div>
-  ))}
-</div>
+    
 
       </div>
     </section>
