@@ -12,7 +12,7 @@ const AboutUs = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center px-6 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
+          <div className="inline-flex items-center justify-center px-6 py-2 bg-blue-100 text-[#669bcc] rounded-full text-sm font-medium mb-4">
             OUR STORY
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 relative">
@@ -38,7 +38,7 @@ const AboutUs = () => {
               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg">
                 <div className="flex items-center">
                   <div className="bg-blue-100 p-2 rounded-lg mr-3">
-                    <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+                    <div className="w-3 h-3 bg-[#669bcc] rounded-full"></div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-gray-900">200+</div>
@@ -56,7 +56,7 @@ const AboutUs = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                Building <span className="text-blue-600 relative">Excellence
+                Building <span className="text-[#669bcc] relative">Excellence
                   <span className="absolute -z-10 -inset-2 bg-blue-100 rounded-md transform -skew-y-2"></span>
                 </span> Since 2019
               </h3>
@@ -77,8 +77,8 @@ const AboutUs = () => {
             </div>
 
             {/* Quote Card */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-600 relative">
-              <div className="absolute top-4 right-4 text-blue-600 opacity-10 text-6xl">"</div>
+            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-[#669bcc] relative">
+              <div className="absolute top-4 right-4 text-[#669bcc] opacity-10 text-6xl">"</div>
               <p className="text-gray-700 italic text-lg relative z-10">
                 "We don't settle for 'OK' — we strive to exceed expectations and
                 build lasting partnerships."
@@ -88,10 +88,10 @@ const AboutUs = () => {
             {/* Features Grid */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { text: "Quality Assurance", icon: <FaCheck className="text-blue-600" /> },
-                { text: "Innovation Driven", icon: <FaCheck className="text-blue-600" /> },
-                { text: "Customer First", icon: <FaCheck className="text-blue-600" /> },
-                { text: "Expert Team", icon: <FaCheck className="text-blue-600" /> },
+                { text: "Quality Assurance", icon: <FaCheck className="text-[#669bcc]" /> },
+                { text: "Innovation Driven", icon: <FaCheck className="text-[#669bcc]" /> },
+                { text: "Customer First", icon: <FaCheck className="text-[#669bcc]" /> },
+                { text: "Expert Team", icon: <FaCheck className="text-[#669bcc]" /> },
               ].map((feature, index) => (
                 <div key={index} className="flex items-center p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="bg-blue-100 p-2 rounded-lg mr-3">
@@ -100,45 +100,39 @@ const AboutUs = () => {
                   <span className="text-gray-700 font-medium">{feature.text}</span>
                 </div>
               ))}
-            </div>
-
-            {/* Social Links */}
-            <div className="pt-4">
-              <span className="text-gray-700 font-medium mr-4">Follow us:</span>
-              <div className="flex gap-3 mt-2">
-                {[
-                  { icon: <FaWhatsapp className="text-lg" />, color: "bg-green-500" },
-                  { icon: <FaFacebookF className="text-lg" />, color: "bg-blue-600" },
-                  { icon: <FaInstagram className="text-lg" />, color: "bg-pink-500" },
-                  { icon: <FaLinkedinIn className="text-lg" />, color: "bg-blue-700" },
-                ].map((item, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className={`w-10 h-10 rounded-full text-white flex items-center justify-center ${item.color} hover:opacity-90 transition-opacity shadow-sm`}
-                  >
-                    {item.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
+            </div>         
           </div>
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
-          {[
-            { number: "4+", label: "Years Experience" },
-            { number: "200+", label: "Happy Clients" },
-            { number: "500+", label: "Projects Completed" },
-            { number: "24/7", label: "Support" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{stat.number}</div>
-              <div className="text-gray-600">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+  {[
+    { number: "4+", label: "Years Experience" },
+    { number: "200+", label: "Happy Clients" },
+    { number: "500+", label: "Projects Completed" },
+    { number: "24/7", label: "Support" },
+  ].map((stat, index) => (
+    <div
+      key={index}
+      className="group relative text-center p-8 bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-2"
+    >
+      {/* Accent Circle Background */}
+      <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-[#669bcc]/10 group-hover:bg-[#669bcc]/20 blur-lg transition-all duration-300"></div>
+
+      {/* Number */}
+      <div className="relative text-4xl font-extrabold text-[#669bcc] mb-3 group-hover:scale-110 transition-transform duration-300">
+        {stat.number}
+      </div>
+
+      {/* Label */}
+      <div className="text-gray-700 font-medium">{stat.label}</div>
+
+      {/* Animated Underline */}
+      <div className="mt-3 h-1 w-0 bg-[#669bcc] mx-auto rounded-full group-hover:w-12 transition-all duration-300"></div>
+    </div>
+  ))}
+</div>
+
       </div>
     </section>
   );
