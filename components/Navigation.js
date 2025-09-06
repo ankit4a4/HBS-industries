@@ -95,22 +95,17 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Main Navigation */}
       <nav
         className={`sticky top-0 z-50 transition-all overflow-hidden border-b-[6px] border-[#659acc] duration-300 ${
           scrolled ? "shadow-md bg-white" : "bg-white"
         }`}
       >
         <div className="relative h-16 md:h-20 flex items-center">
-          {/* Left Blue Box (hide on mobile) */}
           <div className="absolute -left-[7.5%] top-0 h-full w-[44%] bg-[#659acc] transform skew-x-[40deg] origin-top-left hidden md:block"></div>
 
-          {/* Right Blue Box (hide on mobile) */}
           <div className="absolute right-[-6%] top-0 h-full w-[43%] bg-[#659acc] transform -skew-x-[40deg] origin-top-right hidden md:block"></div>
 
           <div className="container mx-auto px-4 relative">
-            {/* ✅ Mobile: flex with logo left, toggle right */}
-            {/* ✅ Desktop: grid layout */}
             <div className="flex items-center justify-between lg:grid lg:grid-cols-3">
               {/* Left Menu (desktop only) */}
               <div className="hidden lg:flex items-center space-x-1">
