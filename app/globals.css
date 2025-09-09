@@ -108,3 +108,6 @@ h6 {
 .animate-spin-slow {
   animation: spin-slow 12s linear infinite;
 }
+.clippathcss {
+  clip-path: polygon(79% 0, 100% 0, 100% 100%, 0 100%, 13% 0);
+}

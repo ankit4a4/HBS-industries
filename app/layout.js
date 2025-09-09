@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} relative`}>
-        <div className="overflow-x-hidden">
+        <div >
           <Navigation />
           {children}
           <Footer />

@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { FaArrowRight, FaPhoneAlt } from "react-icons/fa";
 import Iso from "@/public/images/home/ISO.png";
+import { useRouter } from "next/navigation";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -16,6 +17,7 @@ const Hero = () => {
   const textRef = useRef(null);
   const buttonRef = useRef(null);
   const isoRef = useRef(null);
+  const router = useRouter()
 
   const backgrounds = [
     "https://wallpaperaccess.com/full/2577822.jpg",
@@ -88,9 +90,8 @@ const Hero = () => {
       {backgrounds.map((bg, index) => (
         <div
           key={index}
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out hero-bg ${
-            index === currentBg ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out hero-bg ${index === currentBg ? "opacity-100" : "opacity-0"
+            }`}
           style={{ backgroundImage: `url(${bg})`, zIndex: 1 }}
         />
       ))}
@@ -128,13 +129,17 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div ref={buttonRef} className="flex flex-col sm:flex-row gap-4">
-            <button className="hero-button bg-[#669bcc]  text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 transform   shadow-[#669bcc]/30 flex items-center gap-2">
+          <div
+            ref={buttonRef} className="flex flex-col sm:flex-row gap-4">
+            <button 
+             onClick={() => router.push("/products/single-width-mobile-scaffolding")}
+            className="hero-button bg-[#669bcc]  text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 transform   shadow-[#669bcc]/30 flex items-center gap-2">
               Explore Our Products
               <FaArrowRight className="w-5 h-5" />
             </button>
-
-            <button className="hero-button bg-transparent hover:bg-white/30 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 border-2 border-white/30 hover:border-white/50 flex items-center gap-2">
+            <button
+              onClick={() => router.push("/contact")}
+              className="hero-button bg-transparent hover:bg-white/30 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 border-2 border-white/30 hover:border-white/50 flex items-center gap-2">
               <FaPhoneAlt className="w-5 h-5" />
               Contact Us
             </button>

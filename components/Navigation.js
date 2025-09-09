@@ -111,7 +111,7 @@ export default function Navigation() {
         <div className="relative h-16 md:h-20 flex items-center">
           {/* Blue skewed backgrounds */}
           <div className="absolute -left-[7.5%] top-0 h-full w-[44%] bg-[#659acc] transform skew-x-[40deg] origin-top-left hidden md:block"></div>
-          <div className="absolute right-[-6%] top-0 h-full w-[43%] bg-[#659acc] transform -skew-x-[40deg] origin-top-right hidden md:block"></div>
+          <div className="absolute clippathcss right-[0%] top-0 h-full w-[42%] bg-[#659acc] transform ] origin-top-right hidden md:block"></div>
 
           <div className="container mx-auto px-4 relative z-50">
             <div className="flex items-center justify-between lg:grid lg:grid-cols-3">
