@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import img from "@/public/images/home/banner3.jpg"
 
 export default function HeroSection() {
   return (
@@ -6,7 +7,7 @@ export default function HeroSection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+          src={img.src}
           alt="Aluminum Scaffolds & Ladders"
           fill
           className="object-cover"

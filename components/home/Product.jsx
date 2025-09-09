@@ -2,6 +2,7 @@ import React from "react";
 import img1 from "@/public/images/home/SCAFFOLDS.png";
 import img2 from "@/public/images/home/ladderr.png";
 import img3 from "@/public/images/home/RACEWAYS.png";
+import { useRouter } from "next/navigation";
 
 const products = [
   {
@@ -9,22 +10,26 @@ const products = [
     image: img1.src,
     description: "Premium quality scaffolding solutions for construction safety and efficiency",
     isNew: false,
+    href: "/products/single-width-mobile-scaffolding"
   },
   {
     name: "Ladders",
     image: img2.src,
     description: "Industrial-grade ladders designed for stability and maximum safety",
-    isNew: false, // NEW tag
+    isNew: false,
+    href: "/products/a-type-ladders"
   },
   {
     name: "Raceways",
     image: img3.src,
     description: "Cable management solutions for organized and safe electrical installations",
     isNew: false,
+    href: "/raceways"
   },
 ];
 
 const Products = () => {
+  const router = useRouter()
   return (
     <section className="w-full bg-gray-50 py-12 px-6 md:px-16 lg:px-24">
       {/* Header */}
@@ -57,15 +62,18 @@ const Products = () => {
             {/* Image Section */}
             <div className="relative w-full h-72 flex items-center justify-center">
               <img
+                onClick={() => router.push(`${p.href}`)}
                 src={p.image}
                 alt={p.name}
-                className="max-h-60 object-contain drop-shadow-lg"
+                className="max-h-60 object-contain drop-shadow-lg cursor-pointer"
               />
             </div>
 
             {/* Content */}
             <div className="px-6 pb-8 text-center relative">
-              <h3 className="text-xl font-bold text-gray-800">{p.name}</h3>
+              <h3
+                onClick={() => router.push(`${p.href}`)}
+                className="text-xl font-bold text-gray-800 cursor-pointer">{p.name}</h3>
               <p className="text-gray-500 text-sm">{p.description}</p>
 
               {/* Hover Line */}

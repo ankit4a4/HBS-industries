@@ -9,7 +9,7 @@ import img6 from "@/public/images/service/maintanance-check.jpg"
 export default function ServicesPage() {
     const services = [
         {
-            id: 1,
+            id: "easy",
             title: "Easy Rental",
             icon: <FaMoneyBillAlt className="text-3xl text-blue-600" />,
             description: "Flexible rental options for short-term projects with daily, weekly, and monthly plans. No long-term commitments required.",
@@ -33,7 +33,7 @@ export default function ServicesPage() {
             ]
         },
         {
-            id: 2,
+            id: "Cost-Saving",
             title: "Cost-Saving Purchase",
             icon: <FaMoneyBillAlt className="text-3xl text-blue-600" />,
             description: "Own high-quality equipment with our competitive pricing and financing options. Bulk purchase discounts available.",
@@ -50,7 +50,7 @@ export default function ServicesPage() {
             ]
         },
         {
-            id: 3,
+            id: "On-Site",
             title: "On-Site Product Trainings",
             icon: <FaChalkboardTeacher className="text-3xl text-blue-600" />,
             description: "Comprehensive training programs at your location to ensure your team can safely and efficiently use our equipment.",
@@ -67,7 +67,7 @@ export default function ServicesPage() {
             ]
         },
         {
-            id: 4,
+            id: "Maintenance",
             title: "Maintenance Check",
             icon: <FaClipboardCheck className="text-3xl text-blue-600" />,
             description: "Regular maintenance services to keep your equipment in optimal condition and extend its lifespan.",
@@ -84,7 +84,7 @@ export default function ServicesPage() {
             ]
         },
         {
-            id: 5,
+            id: "Timely",
             title: "Timely Deliveries",
             icon: <FaTruck className="text-3xl text-blue-600" />,
             description: "Reliable delivery service that ensures your equipment arrives exactly when and where you need it.",
@@ -101,7 +101,7 @@ export default function ServicesPage() {
             ]
         },
         {
-            id: 6,
+            id: "Replacements",
             title: "Replacements or Repairs",
             icon: <FaExchangeAlt className="text-3xl text-blue-600" />,
             description: "Quick replacement of damaged equipment and efficient repair services to minimize your downtime.",
@@ -123,7 +123,9 @@ export default function ServicesPage() {
         <div className="min-h-screen bg-gray-50">
             <div className="container mx-auto px-4 py-12">
                 {services.map((service, index) => (
-                    <div key={service.id} className={`mb-16 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
+                    <div
+                      id={service.id}
+                        key={index} className={`mb-16 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
                         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                             <div className="md:flex">
                                 <div className="md:w-1/2 relative">

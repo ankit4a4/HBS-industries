@@ -11,14 +11,17 @@ import {
   FaPause
 } from "react-icons/fa";
 import bgImg from "@/public/images/home/banner-main.jpg"; // Background image path
+import { useRouter } from "next/navigation";
 
 const Services = () => {
   const [activeService, setActiveService] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const intervalRef = useRef(null);
+  const router = useRouter()
 
   const services = [
     {
+      id: "Easy",
       icon: <FaClipboardCheck className="text-2xl" />,
       title: "Effortless Equipment Rental",
       desc: "Rent premium machinery without hefty upfront costs. Flexible plans, maintenance included, and instant access to the tools you need.",
@@ -26,6 +29,7 @@ const Services = () => {
       stats: { value: "40%", label: "Average Cost Savings" }
     },
     {
+      id: "Cost-Saving",
       icon: <FaMoneyBillWave className="text-2xl" />,
       title: "Direct Manufacturer Deals",
       desc: "Cut out the middlemen and source products directly. Enjoy bulk discounts, price match guarantees, and the best rates in the market.",
@@ -33,6 +37,7 @@ const Services = () => {
       stats: { value: "50+", label: "Trusted Manufacturers" }
     },
     {
+      id: "On-Site",
       icon: <FaChalkboardTeacher className="text-2xl" />,
       title: "Expert On-Site Trainings",
       desc: "Ensure your team maximizes the potential of every tool with our hands-on, certified training programs customized to your needs.",
@@ -40,6 +45,7 @@ const Services = () => {
       stats: { value: "98%", label: "Client Satisfaction" }
     },
     {
+      id: "Maintenance",
       icon: <FaTools className="text-2xl" />,
       title: "Comprehensive Maintenance",
       desc: "Extend equipment lifespan and reduce downtime with preventive checks, remote diagnostics, and 24/7 support.",
@@ -47,6 +53,7 @@ const Services = () => {
       stats: { value: "99.5%", label: "Uptime Guarantee" }
     },
     {
+      id: "Timely",
       icon: <FaTruck className="text-2xl" />,
       title: "Rapid Delivery Solutions",
       desc: "Fast, reliable, and transparent logistics ensure your equipment arrives exactly when you need it.",
@@ -54,6 +61,7 @@ const Services = () => {
       stats: { value: "2H", label: "Average Response Time" }
     },
     {
+      id: "Replacements",
       icon: <FaSyncAlt className="text-2xl" />,
       title: "Instant Replacements & Repairs",
       desc: "Minimize downtime with our quick replacement and repair services, backed by a dedicated support team.",
@@ -71,14 +79,14 @@ const Services = () => {
     } else {
       clearInterval(intervalRef.current);
     }
-    
+
     return () => clearInterval(intervalRef.current);
   }, [isPlaying, services.length]);
 
   return (
     <section
       className="relative w-full py-16 px-4 md:px-8 overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `url(${bgImg.src}) ` , backgroundAttachment : "fixed" }}
+      style={{ backgroundImage: `url(${bgImg.src}) `, backgroundAttachment: "fixed" }}
     >
       {/* Black overlay */}
       <div className="absolute inset-0 bg-black/80"></div>
@@ -110,7 +118,7 @@ const Services = () => {
             <div className="sticky top-24">
               <div className="flex justify-between items-center mb-8">
                 <h3 className="text-2xl font-bold text-white">Our Services</h3>
-                <button 
+                <button
                   onClick={() => setIsPlaying(!isPlaying)}
                   className="p-2 rounded-full bg-gray-800/50 backdrop-blur-sm text-gray-400 hover:text-white transition-colors"
                   aria-label={isPlaying ? "Pause auto-rotation" : "Play auto-rotation"}
@@ -118,7 +126,7 @@ const Services = () => {
                   {isPlaying ? <FaPause /> : <FaPlay />}
                 </button>
               </div>
-              
+
               <div className="space-y-4">
                 {services.map((service, index) => (
                   <button
@@ -127,27 +135,23 @@ const Services = () => {
                       setActiveService(index);
                       setIsPlaying(false);
                     }}
-                    className={`w-full text-left p-5 rounded-2xl text-white backdrop-blur-lg bg-white/10 transition-all duration-500  ${
-                      activeService === index 
-                        ? "bg-white/20 border-l-4 border-cyan-400 shadow-lg" 
+                    className={`w-full text-left p-5 rounded-2xl text-white backdrop-blur-lg bg-white/10 transition-all duration-500  ${activeService === index
+                        ? "bg-white/20 border-l-4 border-cyan-400 shadow-lg"
                         : "hover:bg-white/20"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-xl ${
-                        activeService === index ? "bg-cyan-500" : "bg-gray-700"
-                      }`}>
+                      <div className={`p-3 rounded-xl ${activeService === index ? "bg-cyan-500" : "bg-gray-700"
+                        }`}>
                         {service.icon}
                       </div>
                       <div>
-                        <h4 className={`text-lg font-semibold ${
-                          activeService === index ? "text-white" : "text-gray-300"
-                        }`}>
+                        <h4 className={`text-lg font-semibold ${activeService === index ? "text-white" : "text-gray-300"
+                          }`}>
                           {service.title}
                         </h4>
-                        <p className={`text-sm mt-1 ${
-                          activeService === index ? "text-cyan-200" : "text-gray-400"
-                        }`}>
+                        <p className={`text-sm mt-1 ${activeService === index ? "text-cyan-200" : "text-gray-400"
+                          }`}>
                           {service.features[0]}
                         </p>
                       </div>
@@ -164,7 +168,7 @@ const Services = () => {
               {/* Decorative elements */}
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-500/10 rounded-full blur-xl"></div>
               <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-500/10 rounded-full blur-xl"></div>
-              
+
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-8">
                   <div className="p-4 bg-cyan-500  rounded-xl">
@@ -183,7 +187,7 @@ const Services = () => {
                 <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
                   {services[activeService].title}
                 </h3>
-                
+
                 <p className="text-xl text-gray-300 mb-10 leading-relaxed">
                   {services[activeService].desc}
                 </p>
@@ -197,13 +201,59 @@ const Services = () => {
                   ))}
                 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div className="flex flex-wrap gap-4">
-                  <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-cyan-500/20 transition-all">
+                  <button 
+                  onClick={() =>  router.push(`/services#${services[activeService].id}`)}
+                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-cyan-500/20 transition-all">
                     Learn More <FaArrowRight />
                   </button>
-                  <button className="px-8 py-4 bg-gray-800 text-white rounded-xl font-medium border border-gray-700 hover:bg-gray-700/50 transition-colors">
-                    View Case Studies
-                  </button>
+                 
                 </div>
               </div>
             </div>
@@ -217,9 +267,8 @@ const Services = () => {
                     setActiveService(index);
                     setIsPlaying(false);
                   }}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    activeService === index ? "bg-cyan-400 w-8" : "bg-gray-700"
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all ${activeService === index ? "bg-cyan-400 w-8" : "bg-gray-700"
+                    }`}
                   aria-label={`Go to service ${index + 1}`}
                 />
               ))}

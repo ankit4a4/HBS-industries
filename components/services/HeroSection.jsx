@@ -1,11 +1,13 @@
 import Image from 'next/image';
+import img from "@/public/images/home/banner2.jpg"
+
 
 export default function HeroSection() {
   return (
     <div className="relative h-[400px] px-4  w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+          src={img.src}
           alt="Scaffolding and ladder solutions"
           fill
           className="object-cover"

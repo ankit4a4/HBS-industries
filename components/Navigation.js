@@ -3,7 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Mail, Facebook, Instagram, Linkedin } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  Facebook,
+  Instagram,
+  Linkedin,
+  ChevronDown,
+  ChevronRight,
+} from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const navItems = [
@@ -17,6 +25,11 @@ const navItems = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState({
+    products: false,
+    scaffolds: false,
+    ladders: false,
+  });
   const pathname = usePathname();
 
   useEffect(() => {
@@ -25,13 +38,8 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Disable scroll when mobile menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -96,35 +104,128 @@ export default function Navigation() {
       </div>
 
       <nav
-        className={`sticky top-0 z-50 transition-all overflow-hidden border-b-[6px] border-[#659acc] duration-300 ${
+        className={`sticky top-0 z-50  transition-all border-b-[6px] border-[#659acc] duration-300 ${
           scrolled ? "shadow-md bg-white" : "bg-white"
         }`}
       >
         <div className="relative h-16 md:h-20 flex items-center">
+          {/* Blue skewed backgrounds */}
           <div className="absolute -left-[7.5%] top-0 h-full w-[44%] bg-[#659acc] transform skew-x-[40deg] origin-top-left hidden md:block"></div>
-
           <div className="absolute right-[-6%] top-0 h-full w-[43%] bg-[#659acc] transform -skew-x-[40deg] origin-top-right hidden md:block"></div>
 
-          <div className="container mx-auto px-4 relative">
+          <div className="container mx-auto px-4 relative z-50">
             <div className="flex items-center justify-between lg:grid lg:grid-cols-3">
-              {/* Left Menu (desktop only) */}
+              {/* Left Menu (Desktop) */}
               <div className="hidden lg:flex items-center space-x-1">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`relative px-4 py-2 font-medium transition-all duration-200 ${
-                      pathname === item.href
-                        ? "text-white font-semibold"
-                        : "text-white/90 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) =>
+                  item.label === "Products" ? (
+                    <div key="products" className="relative group z-50">
+                      <Link
+                        href={item.href}
+                        className={`relative flex items-center gap-1 px-4 py-2 font-medium transition-all duration-200 ${
+                          pathname === item.href
+                            ? "text-white font-semibold"
+                            : "text-white/90 hover:text-white"
+                        }`}
+                      >
+                        {item.label}
+                        <ChevronDown className="w-4 h-4 mt-0.5 transition-transform duration-200 group-hover:rotate-180" />
+                      </Link>
+
+                      {/* Dropdown for desktop */}
+                      <div className="absolute left-0 top-full hidden group-hover:block bg-white shadow-lg rounded-md w-48 z-50">
+                        <ul className="py-2 text-gray-700">
+                          <li className="relative group/item">
+                            <span className="flex justify-between items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                              Scaffolds ▸
+                            </span>
+                            <ul className="absolute left-full top-0 hidden group-hover/item:block bg-white shadow-lg rounded-md w-52 z-50">
+                              <li>
+                                <Link
+                                  href="/products/single-width-mobile-scaffolding"
+                                  className="block px-4 py-2 hover:bg-gray-100"
+                                >
+                                  Single Width
+                                </Link>
+                              </li>
+                              <li className="relative group/subitem">
+                                <span className="flex justify-between items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                                  Double Width ▸
+                                </span>
+                                <ul className="absolute left-full top-0 hidden group-hover/subitem:block bg-white shadow-lg rounded-md w-56 z-50">
+                                  <li>
+                                    <Link
+                                      href="/products/double-height-mobile-scaffolding"
+                                      className="block px-4 py-2 hover:bg-gray-100"
+                                    >
+                                      Double Height
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link
+                                      href="/products/triple-height-mobile-scaffolding"
+                                      className="block px-4 py-2 hover:bg-gray-100"
+                                    >
+                                      Triple Height
+                                    </Link>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+
+                          <li className="relative group/item">
+                            <span className="flex justify-between items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                              Ladders ▸
+                            </span>
+                            <ul className="absolute left-full top-0 hidden group-hover/item:block bg-white shadow-lg rounded-md w-48 z-50">
+                              <li>
+                                <Link
+                                  href="/products/a-type-ladders"
+                                  className="block px-4 py-2 hover:bg-gray-100"
+                                >
+                                  A Type
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href="/products/airport-ladders"
+                                  className="block px-4 py-2 hover:bg-gray-100"
+                                >
+                                  Airport
+                                </Link>
+                              </li>
+                            </ul>
+                          </li>
+
+                          <li>
+                            <Link
+                              href="/raceways"
+                              className="block px-4 py-2 hover:bg-gray-100"
+                            >
+                              Raceways
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`relative px-4 py-2 font-medium transition-all duration-200 ${
+                        pathname === item.href
+                          ? "text-white font-semibold"
+                          : "text-white/90 hover:text-white"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                )}
               </div>
 
-              {/* Logo (center on desktop, left on mobile) */}
+              {/* Logo */}
               <div className="flex justify-center lg:justify-center">
                 <Link href="/" className="flex items-center">
                   <img
@@ -135,9 +236,8 @@ export default function Navigation() {
                 </Link>
               </div>
 
-              {/* Right side (desktop button + mobile toggle) */}
+              {/* Right Side */}
               <div className="flex justify-end items-center">
-                {/* Desktop Button */}
                 <div className="hidden md:flex items-center gap-4">
                   <button className="bg-white text-[#659acc] font-semibold px-5 py-2.5 rounded-md shadow-md hover:bg-blue-50 flex items-center gap-2 transition">
                     <Phone className="w-4 h-4" />
@@ -173,20 +273,152 @@ export default function Navigation() {
         {isOpen && (
           <div className="lg:hidden bg-white border-t border-gray-200 overflow-hidden">
             <div className="py-2 flex flex-col">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 text-lg font-medium transition-colors ${
-                    pathname === item.href
-                      ? "text-[#659acc] bg-blue-50 font-semibold"
-                      : "text-gray-700 hover:text-[#659acc] hover:bg-gray-50"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.label === "Products" ? (
+                  <div key="products">
+                    <button
+                      onClick={() =>
+                        setMobileOpen((prev) => ({
+                          ...prev,
+                          products: !prev.products,
+                        }))
+                      }
+                      className="flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-700 hover:text-[#659acc] hover:bg-gray-50 w-full"
+                    >
+                      Products
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${
+                          mobileOpen.products ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    {mobileOpen.products && (
+                      <div className="pl-6">
+                        {/* Scaffolds */}
+                        <button
+                          onClick={() =>
+                            setMobileOpen((prev) => ({
+                              ...prev,
+                              scaffolds: !prev.scaffolds,
+                            }))
+                          }
+                          className="flex justify-between items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-50"
+                        >
+                          Scaffolds
+                          <ChevronRight
+                            className={`w-4 h-4 transition-transform ${
+                              mobileOpen.scaffolds ? "rotate-90" : ""
+                            }`}
+                          />
+                        </button>
+                        {mobileOpen.scaffolds && (
+                          <div className="pl-6">
+                            <Link
+                             onClick={() => setIsOpen(!isOpen)}
+                              href="/products/single-width-mobile-scaffolding"
+                              className="block px-4 py-2 hover:bg-gray-50"
+                            >
+                              Single Width
+                            </Link>
+                            <button
+                              onClick={() =>
+                                setMobileOpen((prev) => ({
+                                  ...prev,
+                                  doubleWidth: !prev.doubleWidth,
+                                }))
+                              }
+                              className="flex justify-between items-center w-full px-4 py-2 hover:bg-gray-50"
+                            >
+                              Double Width
+                              <ChevronRight
+                                className={`w-4 h-4 transition-transform ${
+                                  mobileOpen.doubleWidth ? "rotate-90" : ""
+                                }`}
+                              />
+                            </button>
+                            {mobileOpen.doubleWidth && (
+                              <div className="pl-6">
+                                <Link
+                                 onClick={() => setIsOpen(!isOpen)}
+                                  href="/products/double-height-mobile-scaffolding"
+                                  className="block px-4 py-2 hover:bg-gray-50"
+                                >
+                                  Double Height
+                                </Link>
+                                <Link
+                                 onClick={() => setIsOpen(!isOpen)}
+                                  href="/products/triple-height-mobile-scaffolding"
+                                  className="block px-4 py-2 hover:bg-gray-50"
+                                >
+                                  Triple Height
+                                </Link>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Ladders */}
+                        <button
+                          onClick={() =>
+                            setMobileOpen((prev) => ({
+                              ...prev,
+                              ladders: !prev.ladders,
+                            }))
+                          }
+                          className="flex justify-between items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-50"
+                        >
+                          Ladders
+                          <ChevronRight
+                            className={`w-4 h-4 transition-transform ${
+                              mobileOpen.ladders ? "rotate-90" : ""
+                            }`}
+                          />
+                        </button>
+                        {mobileOpen.ladders && (
+                          <div className="pl-6">
+                            <Link
+                             onClick={() => setIsOpen(!isOpen)}
+                              href="/products/a-type-ladders"
+                              className="block px-4 py-2 hover:bg-gray-50"
+                            >
+                              A Type
+                            </Link>
+                            <Link
+                             onClick={() => setIsOpen(!isOpen)}
+                              href="/products/airport-ladders"
+                              className="block px-4 py-2 hover:bg-gray-50"
+                            >
+                              Airport
+                            </Link>
+                          </div>
+                        )}
+
+                        {/* Raceways */}
+                        <Link
+                         onClick={() => setIsOpen(!isOpen)}
+                          href="/raceways"
+                          className="block px-4 py-2 hover:bg-gray-50"
+                        >
+                          Raceways
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`px-4 py-3 text-lg font-medium transition-colors ${
+                      pathname === item.href
+                        ? "text-[#659acc] bg-blue-50 font-semibold"
+                        : "text-gray-700 hover:text-[#659acc] hover:bg-gray-50"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
               <div className="px-4 py-3 mt-2 border-t border-gray-200">
                 <button className="w-full bg-[#659acc] hover:bg-blue-800 text-white py-3 rounded-md font-medium flex items-center justify-center gap-2">
                   <Phone className="w-5 h-5" />

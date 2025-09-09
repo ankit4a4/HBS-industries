@@ -27,7 +27,7 @@ export default function ContactFormSection() {
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
+
           {/* Contact Form */}
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
@@ -125,7 +125,7 @@ export default function ContactFormSection() {
           {/* Office & Warehouse Locations */}
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Our Locations</h2>
-            
+
             <div className="space-y-8">
               {/* Bangalore Office */}
               <div className="bg-gray-50 p-6 rounded-lg">
@@ -191,7 +191,7 @@ export default function ContactFormSection() {
             {/* Enquiry & Customer Support */}
             <div className="mt-8 bg-blue-50 p-6 rounded-lg">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Enquiry & Customer Support</h3>
-              
+
               <div className="space-y-3">
                 <div className="flex items-center">
                   <svg className="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -200,7 +200,7 @@ export default function ContactFormSection() {
                   <span className="text-gray-700 font-medium">Phone:</span>
                   <span className="text-gray-600 ml-2">+91 63668 32224</span>
                 </div>
-                
+
                 <div className="flex items-center">
                   <svg className="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
