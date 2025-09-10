@@ -195,8 +195,11 @@ export default function Footer() {
         className="border-t border-gray-800 py-8"
       >
         <div className="container mx-auto px-4  ">
-          <p className="text-gray-400 text-center  md:text-left">
-            © 2025 HBS Industries. All rights reserved.
+          <p className="text-gray-400 text-center  md:text-center">
+            © 2025 HBS Industries. All rights reserved. Powered by{" "}
+            <a href="https://rankmantra.com/" target="_blank">
+              <span className="text-[#dc2626] font-semibold">Rank</span>mantra
+            </a>
           </p>
         </div>
       </motion.div>
