@@ -13,6 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -31,6 +32,7 @@ export default function Navigation() {
     ladders: false,
   });
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -239,7 +241,10 @@ export default function Navigation() {
               {/* Right Side */}
               <div className="flex justify-end items-center">
                 <div className="hidden md:flex items-center gap-4">
-                  <button className="bg-white text-[#659acc] font-semibold px-5 py-2.5 rounded-md shadow-md hover:bg-blue-50 flex items-center gap-2 transition">
+                  <button
+                    onClick={() => router.push("/contact")}
+                    className="bg-white text-[#659acc] font-semibold px-5 py-2.5 rounded-md shadow-md hover:bg-blue-50 flex items-center gap-2 transition"
+                  >
                     <Phone className="w-4 h-4" />
                     Get Quote
                   </button>
@@ -314,7 +319,7 @@ export default function Navigation() {
                         {mobileOpen.scaffolds && (
                           <div className="pl-6">
                             <Link
-                             onClick={() => setIsOpen(!isOpen)}
+                              onClick={() => setIsOpen(!isOpen)}
                               href="/products/single-width-mobile-scaffolding"
                               className="block px-4 py-2 hover:bg-gray-50"
                             >
@@ -339,14 +344,14 @@ export default function Navigation() {
                             {mobileOpen.doubleWidth && (
                               <div className="pl-6">
                                 <Link
-                                 onClick={() => setIsOpen(!isOpen)}
+                                  onClick={() => setIsOpen(!isOpen)}
                                   href="/products/double-height-mobile-scaffolding"
                                   className="block px-4 py-2 hover:bg-gray-50"
                                 >
                                   Double Height
                                 </Link>
                                 <Link
-                                 onClick={() => setIsOpen(!isOpen)}
+                                  onClick={() => setIsOpen(!isOpen)}
                                   href="/products/triple-height-mobile-scaffolding"
                                   className="block px-4 py-2 hover:bg-gray-50"
                                 >
@@ -377,14 +382,14 @@ export default function Navigation() {
                         {mobileOpen.ladders && (
                           <div className="pl-6">
                             <Link
-                             onClick={() => setIsOpen(!isOpen)}
+                              onClick={() => setIsOpen(!isOpen)}
                               href="/products/a-type-ladders"
                               className="block px-4 py-2 hover:bg-gray-50"
                             >
                               A Type
                             </Link>
                             <Link
-                             onClick={() => setIsOpen(!isOpen)}
+                              onClick={() => setIsOpen(!isOpen)}
                               href="/products/airport-ladders"
                               className="block px-4 py-2 hover:bg-gray-50"
                             >
@@ -395,7 +400,7 @@ export default function Navigation() {
 
                         {/* Raceways */}
                         <Link
-                         onClick={() => setIsOpen(!isOpen)}
+                          onClick={() => setIsOpen(!isOpen)}
                           href="/raceways"
                           className="block px-4 py-2 hover:bg-gray-50"
                         >

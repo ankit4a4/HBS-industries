@@ -48,13 +48,32 @@ const services = [
   },
 ];
 
+const product = [
+  {
+    name: "Scaffolds",
+    href: "/products/single-width-mobile-scaffolding",
+  },
+  {
+    name: "Ladders",
+    href: "/products/a-type-ladders",
+  },
+  {
+    name: "Cable Trays",
+    href: "/trays#solid-cable-trays",
+  },
+  {
+    name: "Raceways",
+    href: "/raceways",
+  },
+];
+
 export default function Footer() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <motion.footer
@@ -106,18 +125,16 @@ export default function Footer() {
           >
             <h3 className="text-xl font-semibold mb-6">Products</h3>
             <ul className="space-y-3">
-              {["Scaffolds" , "Ladders", "Cable Trays", "Raceways"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      href="/#"
-                      className="text-gray-300 hover:text-blue-400 transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
+              {product.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    href={item?.href}
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    {item?.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
@@ -132,7 +149,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((service, idx) => (
                 <li
-                onClick={() => router.push(`/services#${service.id}`)}
+                  onClick={() => router.push(`/services#${service.id}`)}
                   className="text-gray-300 cursor-pointer hover:text-blue-400 transition-colors text-sm"
                 >
                   {service.title}
@@ -166,8 +183,6 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-
-          
           </motion.div>
         </div>
       </div>
@@ -180,10 +195,9 @@ export default function Footer() {
         className="border-t border-gray-800 py-8"
       >
         <div className="container mx-auto px-4  ">
-            <p className="text-gray-400 text-center  md:text-left">
-              © 2025 HBS Industries. All rights reserved.
-            </p>
-           
+          <p className="text-gray-400 text-center  md:text-left">
+            © 2025 HBS Industries. All rights reserved.
+          </p>
         </div>
       </motion.div>
     </motion.footer>
