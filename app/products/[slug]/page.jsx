@@ -25,6 +25,11 @@ import airport2 from "public/productImage/Airport2.png"
 import airport3 from "public/productImage/Airport3.png"
 import airport4 from "public/productImage/Airport4.png"
 import airport5 from "public/productImage/Airport5.png"
+import Stainless1 from "public/productImage/Stainless1.jpg"
+import Stainless2 from "public/productImage/Stainless2.png"
+import Stainless3 from "public/productImage/Stainless3.png"
+import Stainless4 from "public/productImage/Stainless4.png"
+import Stainless5 from "public/productImage/Stainless5.png"
 
 
 export default function SingleProductPage() {
@@ -192,7 +197,43 @@ export default function SingleProductPage() {
                     ]
                 }
             ]
+        },
+        {
+    title: "Stainless Steel Tactile Stud With Stem 304",
+    slug: "stainless-steel-tactile-stud-304",
+    make: "SignXpress India",
+    description: [
+        "Stainless Steel Tactile Studs provide anti-skid surfaces for safety, especially for blind people.",
+        "Ideal for use in schools, public spaces, and other areas requiring tactile guidance.",
+        "Made with high-quality Stainless Steel 304 & 316 Grade for durability and corrosion resistance.",
+        "Gloss finish provides a polished look while maintaining slip resistance.",
+        "Easy installation: can be fixed using drill or paste on any surface."
+    ],
+    images: [
+        Stainless1.src, Stainless2.src, Stainless3.src  , Stainless4.src, Stainless5.src
+    ],
+    specs: [
+        { label: "Material", value: "Stainless Steel 304 & 316 Grade" },
+        { label: "Finish", value: "Gloss Finish" },
+        { label: "Features", value: "Anti Skid / Anti Slip" },
+        { label: "Size", value: "35×4.5 mm" },
+        { label: "Stem", value: "12 mm" },
+        { label: "Shape", value: "Round" },
+        { label: "Thickness", value: "4.5 mm" },
+        { label: "Usage/Application", value: "Mostly for Blind People in Schools and Various Places" },
+        { label: "Country of Origin", value: "Made in India" },
+        { label: "Fixing", value: "Drill & Paste on Any Surface" },
+        { label: "Minimum Order Quantity", value: "50 Pieces" }
+    ],
+    variations: [
+        {
+            title: "Tactile Stud Options",
+            options: ["Standard 35×4.5 mm"],
+            children: []
         }
+    ]
+}
+
     ];
 
     // Find product based on slug

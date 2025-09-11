@@ -208,6 +208,14 @@ export default function Navigation() {
                               Raceways
                             </Link>
                           </li>
+                          <li>
+                            <Link
+                              href="/products/stainless-steel-tactile-stud-304"
+                              className="block px-4 py-2 hover:bg-gray-100"
+                            >
+                              Stainless Steel Tactile Stud{" "}
+                            </Link>
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -405,6 +413,13 @@ export default function Navigation() {
                           className="block px-4 py-2 hover:bg-gray-50"
                         >
                           Raceways
+                        </Link>
+                        <Link
+                          onClick={() => setIsOpen(!isOpen)}
+                          href="/products/stainless-steel-tactile-stud-304"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                        >
+                          Stainless Steel Tactile Stud{" "}
                         </Link>
                       </div>
                     )}
