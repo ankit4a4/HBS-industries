@@ -26,6 +26,13 @@ const products = [
     isNew: false,
     href: "/raceways"
   },
+  {
+    name: " Stainless Steel Tactile Stud",
+    image: img3.src,
+    description: "Stainless Steel Tactile Studs provide anti-skid surfaces for safety, especially for blind people.",
+    isNew: false,
+    href: "/products/stainless-steel-tactile-stud-304"
+  },
 ];
 
 const Products = () => {
@@ -45,7 +52,7 @@ const Products = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
         {products.map((p, i) => (
           <div
             key={i}
