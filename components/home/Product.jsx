@@ -2,7 +2,11 @@ import React from "react";
 import img1 from "@/public/images/home/SCAFFOLDS.png";
 import img2 from "@/public/images/home/ladderr.png";
 import img3 from "@/public/images/home/RACEWAYS.png";
+import img4 from "@/public/productImage/Stainless1.jpg";
 import { useRouter } from "next/navigation";
+import doubleHeight1 from "public/productImage/DoubleHeight1-removebg-preview.png"
+import triple1 from "public/productImage/TripleHeight1-removebg-preview.png"
+import airport from "public/productImage/Airport1-removebg-preview.png"
 
 const products = [
   {
@@ -28,10 +32,35 @@ const products = [
   },
   {
     name: " Stainless Steel Tactile Stud",
-    image: img3.src,
+    image: img4.src,
     description: "Stainless Steel Tactile Studs provide anti-skid surfaces for safety, especially for blind people.",
     isNew: false,
     href: "/products/stainless-steel-tactile-stud-304"
+  },
+
+  
+
+
+  {
+    name: "Scaffolds Double Height",
+    image: doubleHeight1.src,
+    description: "HBS Aluminium Scaffoldings allow your workers to reach heights safely. Its sturdy and solid structure provides a better position to work on walls & ceilings.",
+    isNew: false,
+    href: "/products/double-height-mobile-scaffolding"
+  },
+  {
+    name: "Scaffolds Triple Height",
+    image: triple1.src,
+    description: "A Semi-Vertical Stairways to access platform, that is designed to climb up-words from the inner side of scaffold; allows proper access to the scaffolds & ensures maximum safety.",
+    isNew: false,
+    href: "/products/triple-height-mobile-scaffolding"
+  },
+  {
+    name: "Airport Ladders",
+    image: airport.src,
+    description: "Railing provides stability, it helps workers maintain their balance on steps whilst climbing.",
+    isNew: false,
+    href: "/products/airport-ladders"
   },
 ];
 
@@ -67,12 +96,12 @@ const Products = () => {
             )}
 
             {/* Image Section */}
-            <div className="relative w-full h-72 flex items-center justify-center">
+            <div className="relative w-full h-60 flex items-center justify-center">
               <img
                 onClick={() => router.push(`${p.href}`)}
                 src={p.image}
                 alt={p.name}
-                className="max-h-60 object-contain drop-shadow-lg cursor-pointer"
+                className="max-h-48 object-contain  cursor-pointer rounded-lg"
               />
             </div>
 
@@ -81,7 +110,7 @@ const Products = () => {
               <h3
                 onClick={() => router.push(`${p.href}`)}
                 className="text-xl font-bold text-gray-800 cursor-pointer">{p.name}</h3>
-              <p className="text-gray-500 text-sm">{p.description}</p>
+              <p className="text-gray-500 text-sm line-clamp-2">{p.description}</p>
 
               {/* Hover Line */}
               <span className="absolute bottom-0 left-1/2 w-0 h-[3px] bg-blue-500 rounded-full 
