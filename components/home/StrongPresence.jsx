@@ -5,8 +5,8 @@ const locations = [
   { name: "BENGALURU RURAL", type: "warehouse", color: "from-blue-400 to-blue-600" },
   { name: "HYDERABAD", type: "warehouse", color: "from-blue-400 to-blue-600" },
   { name: "CHENNAI", type: "warehouse", color: "from-blue-400 to-blue-600" },
-  { name: "MUMBAI", type: "planning", color: "from-yellow-400 to-yellow-600" },
-  { name: "PUNE", type: "planning", color: "from-yellow-400 to-yellow-600" },
+  { name: "MUMBAI", type: "planning", color: "from-blue-400 to-blue-600" },
+  { name: "PUNE", type: "planning", color: "from-blue-400 to-blue-600" },
   { name: "BENGALURU", type: "plant", color: "from-pink-400 to-pink-600" },
 ];
 
@@ -91,10 +91,10 @@ const StrongPresence = () => {
             <span className="w-4 h-4 rounded-full bg-gradient-to-r from-pink-400 to-pink-600"></span>
             Current Manufacturing Plant
           </div>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <span className="w-4 h-4 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600"></span>
             In Planning
-          </div>
+          </div> */}
         </div>
 
         {/* Scroll Indicator */}
